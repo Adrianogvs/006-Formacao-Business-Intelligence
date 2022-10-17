@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+<style>
+      .table {
+        background-color:#F5F5FF;
+        border-left:4px solid gray;
+        border-bottom:4px solid gray;
+        border-top:4px solid gray;
+        border-right:4px solid gray;
+        margin-bottom:3em;
+        margin-left:2em;
+        margin-right:2em;
+        padding:1em;
+      }
+      .tableNameHeading h1 {
+          display: inline;
+        font-family: Segoe UI, Arial, sans-serif;
+        font-size:125%;
+        font-weight:bold;
+      }
+        
+      .tableNameHeading h2 {
+        display: inline;
+        font-family: Segoe UI, Arial, sans-serif;
+        font-size:115%;
+        font-weight:normal;
+      }
+      
+      .tableComment { 
+        background-color:#e4efff; margin-bottom:20px;
+      }
+      
+      .tableDefinition { 
+        padding:2px;
+        border-collapse:collapse;
+        margin-top:1em;
+      }
+
+      .tdTableDefinition {
+        padding-right:10px;
+        vertical-align:top;
+        border-top:1px solid #C0C0C0;
+      }
+
+      .tdLogicalColName {
+        width:20em;
+      }
+      
+      .tdPhysicalColName {
+        width:20em;
+      }
+      
+      .tdDataType {
+        width:10em;
+      }
+
+      .tdPkFlag {
+        width:4em;
+      }
+
+      .tdNullFlag {
+        width:9em;
+      }
+
+      .tdTableHeading {
+        padding:2px;
+        font-family: Segoe UI, Arial, sans-serif;
+        font-weight: bold;
+        vertical-align:top;
+        border-bottom: 1px solid #C0C0C0;
+        background-color: rgb(240,240,240);
+      }
+      
+      .subTitle {
+        font-family: Segoe UI, Arial, sans-serif;
+        font-weight: bold;
+      }
+
+      .references {
+      }
+      .comment {
+        color:#666666;
+        margin-left:3em;
+        padding:0.25em;
+      }
+    </style>
+<title>001-StarSchema</title>
+</head>
+<body>
+<center>
+<h2>001-StarSchema</h2>
+</center>
+<h3>List of tables</h3>
+<ul>
+<li>
+<a href="#Dimens%C3%A3o Cliente">Dimens&atilde;o Cliente</a>
+</li>
+<li>
+<a href="#Dimens%C3%A3o Geografia">Dimens&atilde;o Geografia</a>
+</li>
+<li>
+<a href="#Dimens%C3%A3o Produto">Dimens&atilde;o Produto</a>
+</li>
+<li>
+<a href="#Dimens%C3%A3o Tempo">Dimens&atilde;o Tempo</a>
+</li>
+<li>
+<a href="#Fato Vendas">Fato Vendas</a>
+</li>
+</ul>
+<div class="tableNameHeading">
+<h1>Dimens&atilde;o Cliente<a name="Dimens%C3%A3o Cliente"></a>
+</h1>
+<h2>
+      (Physical Name: DIM_CLIENTE)
+      </h2>
+<p class="comment">Dimens&atilde;o para cadastro dos clientes.</p>
+</div>
+<div class="table">
+<table class="tableDefinition" width="100%">
+<tr>
+<td class="tdTableHeading tdLogicalColName">Logical Column Name</td><td class="tdTableHeading tdPhysicalColName">Physical Column Name</td><td class="tdTableHeading tdDataType">Type</td><td class="tdTableHeading tdPkFlag">PK</td><td class="tdTableHeading tdNullFlag">Nullable</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Surrogate Key (Cliente) (PK)</td><td class="tdTableDefinition">SK_CLIENTE</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap>PK</td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr>
+<td colspan="4">
+<div class="comment">Chave Artificial.<br>
+<br>Sequence.<br>
+<br>N&atilde;o reutilizar.</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Natural Key (Cliente)</td><td class="tdTableDefinition">NK_CLIENTE</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr>
+<td colspan="4">
+<div class="comment">&Eacute; o CPF do Cliente.</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Nome Cliente</td><td class="tdTableDefinition">NOME_CLIENTE</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr>
+<td colspan="4">
+<div class="comment">Nome completo do cliente.</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Email do Cliente</td><td class="tdTableDefinition">EMAIL_CLIENTE</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr>
+<td colspan="4">
+<div class="comment">E-mail do Cliente.</div>
+</td>
+</tr>
+</table>
+<div class="references">
+<p class="subTitle">Referenced By</p>
+<ul>
+<li>
+<a href="#Fato Vendas">Fato Vendas</a> referencing (Surrogate Key (Cliente))</li>
+</ul>
+</div>
+</div>
+<div class="tableNameHeading">
+<h1>Dimens&atilde;o Geografia<a name="Dimens%C3%A3o Geografia"></a>
+</h1>
+<h2>
+      (Physical Name: DIM_GEOGRAFIA)
+      </h2>
+</div>
+<div class="table">
+<table class="tableDefinition" width="100%">
+<tr>
+<td class="tdTableHeading tdLogicalColName">Logical Column Name</td><td class="tdTableHeading tdPhysicalColName">Physical Column Name</td><td class="tdTableHeading tdDataType">Type</td><td class="tdTableHeading tdPkFlag">PK</td><td class="tdTableHeading tdNullFlag">Nullable</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Surrogate Key(Geografia) (PK)</td><td class="tdTableDefinition">SK_GEOGRAFIA</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap>PK</td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Natural Key(Geografia)</td><td class="tdTableDefinition">NK_GEOGRAFIA</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr>
+<td colspan="4">
+<div class="comment">&Eacute; o CEP.</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Nome do Pais</td><td class="tdTableDefinition">NOME_PAIS</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Nome do Estado</td><td class="tdTableDefinition">NOME_ESTADO</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">UF</td><td class="tdTableDefinition">UF</td><td class="tdTableDefinition">CHAR</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Nome Cidade</td><td class="tdTableDefinition">NOME_CIDADE</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+</table>
+<div class="references">
+<p class="subTitle">Referenced By</p>
+<ul>
+<li>
+<a href="#Fato Vendas">Fato Vendas</a> referencing (Surrogate Key(Geografia))</li>
+</ul>
+</div>
+</div>
+<div class="tableNameHeading">
+<h1>Dimens&atilde;o Produto<a name="Dimens%C3%A3o Produto"></a>
+</h1>
+<h2>
+      (Physical Name: DIM_PRODUTO)
+      </h2>
+</div>
+<div class="table">
+<table class="tableDefinition" width="100%">
+<tr>
+<td class="tdTableHeading tdLogicalColName">Logical Column Name</td><td class="tdTableHeading tdPhysicalColName">Physical Column Name</td><td class="tdTableHeading tdDataType">Type</td><td class="tdTableHeading tdPkFlag">PK</td><td class="tdTableHeading tdNullFlag">Nullable</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Surrogate Key(Produto) (PK)</td><td class="tdTableDefinition">SK_PRODUTO</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap>PK</td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">C&oacute;digo Categoria</td><td class="tdTableDefinition">CD_CATEGORIA</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Nome Categoria</td><td class="tdTableDefinition">NOME_CATEGORIA</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">C&oacute;digo Sub-Categoria</td><td class="tdTableDefinition">CD_SUB_CATEGORIA</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Nome Sub-Categoria</td><td class="tdTableDefinition">NOME_SUB_CATEGORIA</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Natural Key(Produto)</td><td class="tdTableDefinition">CD_PRODUTO</td><td class="tdTableDefinition">VARCHAR(120)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr>
+<td colspan="4">
+<div class="comment">C&oacute;digo do produto do legado (Sistema).</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Nome do Produto</td><td class="tdTableDefinition">NOME_PRODUTO</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr>
+<td colspan="4">
+<div class="comment">Nome do produto.</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Marca do Produto</td><td class="tdTableDefinition">MARCA_PRODUTO</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr>
+<td colspan="4">
+<div class="comment">Marca do Produto.</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Pre&ccedil;o Unit&aacute;rio</td><td class="tdTableDefinition">PRECO_UNITARIO</td><td class="tdTableDefinition">NUMERIC(12,4)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+</table>
+<div class="references">
+<p class="subTitle">Referenced By</p>
+<ul>
+<li>
+<a href="#Fato Vendas">Fato Vendas</a> referencing (Surrogate Key(Produto))</li>
+</ul>
+</div>
+</div>
+<div class="tableNameHeading">
+<h1>Dimens&atilde;o Tempo<a name="Dimens%C3%A3o Tempo"></a>
+</h1>
+<h2>
+      (Physical Name: DIM_DATA)
+      </h2>
+</div>
+<div class="table">
+<table class="tableDefinition" width="100%">
+<tr>
+<td class="tdTableHeading tdLogicalColName">Logical Column Name</td><td class="tdTableHeading tdPhysicalColName">Physical Column Name</td><td class="tdTableHeading tdDataType">Type</td><td class="tdTableHeading tdPkFlag">PK</td><td class="tdTableHeading tdNullFlag">Nullable</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Surrogate Key Data (PK)</td><td class="tdTableDefinition">SK_DATA</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap>PK</td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">DATA</td><td class="tdTableDefinition">DATA</td><td class="tdTableDefinition">DATE</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Descri&ccedil;&atilde;o Data Completa</td><td class="tdTableDefinition">DESC_DATA_COMPLETA</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Numero do Ano</td><td class="tdTableDefinition">NR_ANO</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">N&uacute;mero do Trimestre</td><td class="tdTableDefinition">NR_TRIMESTRE</td><td class="tdTableDefinition">VARCHAR(20)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">N&uacute;mero Ano Trimestre</td><td class="tdTableDefinition">NR_ANO_TRIMESTRE</td><td class="tdTableDefinition">VARCHAR(20)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">N&uacute;mero do M&ecirc;s</td><td class="tdTableDefinition">NR_MES</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Nome do M&ecirc;s</td><td class="tdTableDefinition">NM_MES</td><td class="tdTableDefinition">VARCHAR(20)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Ano e M&ecirc;s</td><td class="tdTableDefinition">ANO_MES</td><td class="tdTableDefinition">VARCHAR(20)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">N&uacute;mero da Semana</td><td class="tdTableDefinition">NR_SEMANA</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Ano Semana</td><td class="tdTableDefinition">ANO_SEMANA</td><td class="tdTableDefinition">VARCHAR(20)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">N&uacute;mero do Dia</td><td class="tdTableDefinition">NR_DIA</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">N&uacute;mero do Dia e do Ano</td><td class="tdTableDefinition">NR_DIA_ANO</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Nome do Dia da Semana</td><td class="tdTableDefinition">NM_DIA_SEMANA</td><td class="tdTableDefinition">VARCHAR(20)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Flag Final  de Semana</td><td class="tdTableDefinition">FLAG_FINAL_SEMANA</td><td class="tdTableDefinition">CHAR</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Flag de Feriado</td><td class="tdTableDefinition">FLAG_FERIADO</td><td class="tdTableDefinition">CHAR</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Nome do Feriado</td><td class="tdTableDefinition">NM_FERIADO</td><td class="tdTableDefinition">VARCHAR(60)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Data da Carga de Dados</td><td class="tdTableDefinition">DT_CARGA</td><td class="tdTableDefinition">TIMESTAMP</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+</table>
+<div class="references">
+<p class="subTitle">Referenced By</p>
+<ul>
+<li>
+<a href="#Fato Vendas">Fato Vendas</a> referencing (Surrogate Key Data)</li>
+</ul>
+</div>
+</div>
+<div class="tableNameHeading">
+<h1>Fato Vendas<a name="Fato Vendas"></a>
+</h1>
+<h2>
+      (Physical Name: FAT_VENDA)
+      </h2>
+<p class="comment">N&atilde;o esta utilizando PK na fato.</p>
+</div>
+<div class="table">
+<table class="tableDefinition" width="100%">
+<tr>
+<td class="tdTableHeading tdLogicalColName">Logical Column Name</td><td class="tdTableHeading tdPhysicalColName">Physical Column Name</td><td class="tdTableHeading tdDataType">Type</td><td class="tdTableHeading tdPkFlag">PK</td><td class="tdTableHeading tdNullFlag">Nullable</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Surrogate Key (Cliente)
+                &nbsp;(<a href="#Dimens%C3%A3o Cliente">FK</a>)
+              </td><td class="tdTableDefinition">SK_CLIENTE</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr>
+<td colspan="4">
+<div class="comment">Chave Artificial.<br>
+<br>Sequence.<br>
+<br>N&atilde;o reutilizar.</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Surrogate Key(Produto)
+                &nbsp;(<a href="#Dimens%C3%A3o Produto">FK</a>)
+              </td><td class="tdTableDefinition">SK_PRODUTO</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Surrogate Key(Geografia)
+                &nbsp;(<a href="#Dimens%C3%A3o Geografia">FK</a>)
+              </td><td class="tdTableDefinition">SK_GEOGRAFIA</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">Surrogate Key Data
+                &nbsp;(<a href="#Dimens%C3%A3o Tempo">FK</a>)
+              </td><td class="tdTableDefinition">SK_DATA</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">M&eacute;trica Derivada - Valor da Venda</td><td class="tdTableDefinition">VALOR_VENDA_DERIVADA</td><td class="tdTableDefinition">NUMERIC(12,4)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr>
+<td colspan="4">
+<div class="comment">Valor da Venda = Quantidade Vendida * Pre&ccedil;o Unit&aacute;rio do Produto.</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">M&eacute;trica Derivada - Valor da Venda</td><td class="tdTableDefinition">VALOR_VENDA</td><td class="tdTableDefinition">NUMERIC(12,4)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+<tr>
+<td colspan="4">
+<div class="comment">Valor sem o c&aacute;lculo da m&eacute;trica derivada.</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="tdTableDefinition">M&eacute;trica Quantidade Vendida</td><td class="tdTableDefinition">QTD_VENDIDA</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+</tr>
+</table>
+<div class="references">
+<p class="subTitle">References</p>
+<ul>
+<li>
+<a href="#Dimens%C3%A3o Cliente">Dimens&atilde;o Cliente</a> through (Surrogate Key (Cliente))</li>
+<li>
+<a href="#Dimens%C3%A3o Produto">Dimens&atilde;o Produto</a> through (Surrogate Key(Produto))</li>
+<li>
+<a href="#Dimens%C3%A3o Geografia">Dimens&atilde;o Geografia</a> through (Surrogate Key(Geografia))</li>
+<li>
+<a href="#Dimens%C3%A3o Tempo">Dimens&atilde;o Tempo</a> through (Surrogate Key Data)</li>
+</ul>
+</div>
+</div>
+</body>
+</html>
